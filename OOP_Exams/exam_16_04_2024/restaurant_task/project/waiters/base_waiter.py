@@ -4,8 +4,8 @@ from abc import ABC, abstractmethod
 class BaseWaiter(ABC):
 
     def __init__(self, name: str, hours_worked: int):
-        self.__name = name
-        self.__hours_worked = hours_worked
+        self.name = name
+        self.hours_worked = hours_worked
 
     @property
     def name(self):
@@ -25,6 +25,7 @@ class BaseWaiter(ABC):
     def hours_worked(self, value):
         if value < 0:
             raise ValueError("Cannot have negative hours worked!")
+        self.__hours_worked = value
 
     @abstractmethod
     def calculate_earnings(self):

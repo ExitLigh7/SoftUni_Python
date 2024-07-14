@@ -7,8 +7,8 @@ class BaseClient(ABC):
     HALF_DISCOUNT_POINTS = 50
 
     def __init__(self, name: str, membership_type: str):
-        self.__name = name
-        self.__membership_type = membership_type
+        self.name = name
+        self.membership_type = membership_type
         self.points: int = 0
 
     @property
@@ -27,11 +27,8 @@ class BaseClient(ABC):
 
     @membership_type.setter
     def membership_type(self, value):
-        try:
-            self.VALID_MEMBERSHIPS.get(value)
-        except AttributeError:
+        if value not in self.VALID_MEMBERSHIPS:
             raise ValueError("Invalid membership type. Allowed types: Regular, VIP.")
-
         self.__membership_type = value
 
     @abstractmethod
@@ -43,14 +40,10 @@ class BaseClient(ABC):
         used_points = 0
         if self.points >= self.MAX_DISCOUNT_POINTS:
             discount_percentage = 10
-            used_points = 100
+            used_points = self.MAX_DISCOUNT_POINTS
         elif self.points > self.HALF_DISCOUNT_POINTS:
             discount_percentage = 5
-            used_points = 50
+            used_points = self.HALF_DISCOUNT_POINTS
 
         self.points -= used_points
         return discount_percentage, self.points
-
-
-
-

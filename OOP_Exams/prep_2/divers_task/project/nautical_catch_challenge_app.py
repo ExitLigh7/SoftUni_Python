@@ -34,7 +34,6 @@ class NauticalCatchChallengeApp:
             self.divers.append(diver)
             return f"{diver_name} is successfully registered for the competition as a {diver_type}."
 
-
     def swim_into_competition(self, fish_type: str, fish_name: str, points: float):
         try:
             fish = self.VALID_FISH_TYPES[fish_type](fish_name,points)
@@ -80,7 +79,6 @@ class NauticalCatchChallengeApp:
             diver.hit(fish)
             return f"{diver_name} hits a {fish.points}pt. {fish_name}."
 
-
     def health_recovery(self):
         count = 0
         for diver in self.divers:
@@ -90,14 +88,12 @@ class NauticalCatchChallengeApp:
                 count += 1
         return f"Divers recovered: {count}"
 
-
     def diver_catch_report(self, diver_name: str):
         diver = next(filter(lambda d: d.name == diver_name, self.divers))
 
         fish_details = '\n'.join(f.fish_details () for f in diver.catch)
         return (f"**{diver_name} Catch Report**\n"
                 f"{fish_details}")
-
 
     def competition_statistics(self):
         divers_in_good_health = [d for d in self.divers if not d.has_health_issue]
