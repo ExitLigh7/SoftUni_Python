@@ -53,7 +53,7 @@ class BaseInfluencer(ABC):
         if not self.campaigns_participated:
             return f"{self.username} has not participated in any campaigns."
 
-        result = f"{self.__class__.__name__} :) {self.username} :) participated in the following campaigns:\n"
+        result = f"{self.__class__.__name__} :) {self.username} :) participated in the following campaigns:"
 
         for c in self.campaigns_participated:
             result += f"\n  - Campaign ID: {c.campaign_id}, "\
