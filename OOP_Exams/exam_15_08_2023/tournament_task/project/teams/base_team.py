@@ -30,6 +30,7 @@ class BaseTeam(ABC):
     def country(self, value):
         if len(value.strip()) < 2:
             raise ValueError("Team country should be at least 2 symbols long!")
+        self.__country = value
 
     @property
     def advantage(self):
@@ -39,6 +40,7 @@ class BaseTeam(ABC):
     def advantage(self, value):
         if value <= 0:
             raise ValueError("Advantage must be greater than zero!")
+        self.__advantage = value
 
     @abstractmethod
     def win(self):
@@ -46,7 +48,8 @@ class BaseTeam(ABC):
 
     def get_statistics(self):
         total_price_of_team_equipment = sum(eq.price for eq in self.equipment)
-        avg_team_protection = int(sum(eq.protection for eq in self.equipment) / len(self.equipment))
+        avg_team_protection = (
+            int(sum(eq.protection for eq in self.equipment) / len(self.equipment))) if self.equipment else 0
 
         return f"Name: {self.name}\n"\
                f"Country: {self.country}\n"\
