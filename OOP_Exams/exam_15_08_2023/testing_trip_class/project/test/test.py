@@ -55,7 +55,7 @@ class TestTrip(TestCase):
 
     def test_booking_status__one_booking(self) :
         t = Trip(1000, 1, False)
-        t.book_a_trip('Bulgaria' )
+        t.book_a_trip('Bulgaria')
         self.assertEqual(t.booked_destinations_paid_amounts, {'Bulgaria': 500.0})
         res = t.booking_status()
         self.assertEqual(res, """Booked Destination: Bulgaria
