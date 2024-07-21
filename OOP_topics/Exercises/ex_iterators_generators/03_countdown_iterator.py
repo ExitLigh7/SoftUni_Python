@@ -1,3 +1,4 @@
+
 class countdown_iterator:
     def __init__(self, count: int):
         self.count = count
@@ -11,6 +12,7 @@ class countdown_iterator:
             self.count -= 1
             return i
         raise StopIteration
+
 
 iterator = countdown_iterator(10)
 for item in iterator:
