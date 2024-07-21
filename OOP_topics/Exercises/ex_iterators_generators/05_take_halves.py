@@ -1,3 +1,5 @@
+-
+
 def solution():
 
     def integers():
@@ -15,7 +17,6 @@ def solution():
         for _ in range(n):
             result.append(next(seq))
         return result
-
 
     return (take, halves, integers)
 
