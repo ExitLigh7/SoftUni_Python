@@ -2,7 +2,7 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/OOP_Exams/exam_22_08_2022/testing_shopping_cart" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OOP_Exams/exam_14_08_2022/horse_race" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12 (SoftUni_Python)" jdkType="Python SDK" />
