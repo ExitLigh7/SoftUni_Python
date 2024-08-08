@@ -1,3 +1,6 @@
+from project.supply.supply import Supply
+
+
 class Player:
     TAKEN_NAMES: list = []
     MAX_STAMINA: int = 100
@@ -43,6 +46,15 @@ class Player:
     @property
     def need_sustenance(self):
         return self.__stamina < self.MAX_STAMINA
+
+    def _sustain_player(self, supply: Supply):
+        if self.stamina + supply.energy > 100:
+            self.stamina = 100
+        else:
+            self.stamina += supply.energy
+
+    def __lt__(self, other):
+        return self.stamina < other.stamina
 
     def __str__(self):
         return f"Player: {self.name}, {self.age}, {self.stamina}, {self.need_sustenance}"
