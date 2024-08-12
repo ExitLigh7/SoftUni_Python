@@ -11,6 +11,3 @@ class HighBudgetCampaign(BaseCampaign):
     def check_eligibility(self, engagement_rate: float):
         needed_rate = self.MIN_ENGAGEMENT_RATE * self.required_engagement
         return engagement_rate >= needed_rate
-
-
-
