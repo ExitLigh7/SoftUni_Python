@@ -1,0 +1,58 @@
+CREATE DATABASE game_bar
+    WITH
+    OWNER = dgeorgiev
+    ENCODING = 'UTF8'
+    LOCALE_PROVIDER = 'libc'
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+
+CREATE TABLE employees
+(
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR (30) NOT NULL,
+	last_name VARCHAR (30) NOT NULL
+)
+
+CREATE TABLE categories
+(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR (30) NOT NULL
+)
+
+CREATE TABLE products
+(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR (30) NOT NULL,
+	category_id INT	NOT NULL
+)
+
+INSERT INTO employees(first_name, last_name)
+	VALUES ('Ivan', 'Ivanov'),
+			('Maria', 'Petrova'),
+			('Georgi', 'Dimitrov')
+
+ALTER TABLE IF EXISTS public.products
+    ADD CONSTRAINT fk_products_categories FOREIGN KEY (category_id)
+    REFERENCES public.categories (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+SELECT last_name
+FROM employees
+WHERE last_name = 'Dimitrov'
+
+UPDATE employees
+SET last_name = 'Ivanova'
+WHERE id = 2
+
+ALTER TABLE employees
+ADD COLUMN salary DECIMAL;
+
+UPDATE employees
+	SET salary = 2000
+
+DELETE FROM employees
+WHERE id = 1;
